@@ -1,0 +1,8 @@
+{C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter.v} {1 {vlog -work work -stats=none {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module BCDCounter
+
+Top level modules:
+	BCDCounter
+
+} {} {}}
