@@ -10,8 +10,8 @@ module BCDCounter(
 	reg [3:0] temp;
 	
 
-	always @(posedge clk) begin
-		if (clr == 0) temp <= 4'b0000;
+	always @(posedge clk or negedge clr) begin
+		if (!clr) temp <= 4'b0000;
 		else begin
 			if (load == 1 && enable == 1)
 				temp <= d;
@@ -28,6 +28,7 @@ module BCDCounter(
 				temp <= 4'b1001;
 			end
 		end
-		assign q = temp;
+		
 	end
+	assign q = temp;
 endmodule 
