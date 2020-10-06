@@ -24,43 +24,15 @@ module BCDCounter_tb();
 		up = 1'b0;
 		#60;
 
-<<<<<<< HEAD
 		//load 7 
 		load = 1'b1;
 		d = 4'b0111;
-||||||| merged common ancestors
-<<<<<<<<< Temporary merge branch 1
-		//load again
-		load = 1'b1;
-||||||||| 53acab0
-		//load again
-		load =1;
-=========
-		//load 4 
-		load = 1'b1;
->>>>>>>>> Temporary merge branch 2
-		d = 4'b0100;
-<<<<<<<<< Temporary merge branch 1
-		#20;
-||||||||| 53acab0
-		#20
-=========
-=======
-		//load 4 
-		load = 1'b1;
-		d = 4'b0100;
->>>>>>> 413a193fdcc99eaa164296d78d37e165e9a7366b
 		#37;
-<<<<<<< HEAD
 
 		//decrement
 		load = 1'b0;
 		up = 1'b0;
 		#90;
-||||||| merged common ancestors
->>>>>>>>> Temporary merge branch 2
-=======
->>>>>>> 413a193fdcc99eaa164296d78d37e165e9a7366b
 
 		//clear
 		clr = 1'b0;
