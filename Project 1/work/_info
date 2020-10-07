@@ -14,12 +14,12 @@ vBCDCounter
 !s100 L>`^0f=k:bD[nG5fMdoKV0
 IjIj`SIo:;X4WhK1k`<;n]0
 Z0 VDg1SIo80bB@j0V0VzS_@n1
-Z1 dC:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1
+dC:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1
 w1601931341
 8C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter.v
 FC:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter.v
 L0 2
-Z2 OP;L;10.4a;61
+Z1 OP;L;10.4a;61
 r1
 !s85 0
 31
@@ -28,27 +28,71 @@ r1
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter.v|
 !s101 -O0
 !i113 1
-Z3 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+Z2 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
 n@b@c@d@counter
 vBCDCounter_tb
-!s110 1601937454
+!s110 1602030590
 !i10b 1
-!s100 Y8lDZkNHkk6;GGXQ2YoTa3
-Iknl0QSUjSOkQGHjLQ8lD61
+!s100 nfGeza64kSmnSLLWYWZ]V3
+I5:RDZ>9;^J=mAV@HZiR663
 R0
+Z3 dC:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1
+w1602030584
+Z4 8C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11_tb.v
+Z5 FC:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11_tb.v
+L0 1
 R1
-w1601937427
-8C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter_tb.v
-FC:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter_tb.v
-L0 3
-R2
 r1
 !s85 0
 31
-!s108 1601937454.000000
-!s107 C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter_tb.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 1/BCDCounter_tb.v|
+!s108 1602030590.000000
+!s107 C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11_tb.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11_tb.v|
 !s101 -O0
 !i113 1
-R3
+R2
 n@b@c@d@counter_tb
+vDiv11
+!s110 1602030447
+!i10b 1
+!s100 PZLeVnjTb17lJ?f6dObIU2
+II]NSneZEJbUSK_D6YLDMV2
+R0
+R3
+w1602030433
+8C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11.v
+FC:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11.v
+L0 3
+R1
+r1
+!s85 0
+31
+!s108 1602030447.000000
+!s107 C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11.v|
+!s101 -O0
+!i113 1
+R2
+n@div11
+vDiv11_tb
+!s110 1602030921
+!i10b 1
+!s100 2ibCAW`oO>oeDYDfEbKij0
+I`N7lDI95hGGWE9>W?_HXO0
+R0
+R3
+w1602030917
+R4
+R5
+L0 1
+R1
+r1
+!s85 0
+31
+!s108 1602030921.000000
+!s107 C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11_tb.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/Yuhan/Google Drive/3rd year/Fall/CS 152B/colab/Project 1/Div11_tb.v|
+!s101 -O0
+!i113 1
+R2
+n@div11_tb
