@@ -1,3 +1,5 @@
+// Code your testbench here
+// or browse Examples
 module divis3_tb();
 
 reg [15:0] bcd;
@@ -39,6 +41,19 @@ initial begin
   bcd = 16'b0000_0000_0000_0000;		//0
   #t
   $display("BCD = 0 | Result: %b", out);
+  #t
+  bcd = 16'b000_0101_0000_0000;		//500
+  #t
+  $display("BCD = 500 | Result: %b", out);
+  #t
+  bcd = 16'b0011_0011_0011_0011;		//3333
+  #t
+  $display("BCD = 3333 | Result: %b", out);
+  #t
+  bcd = 16'b0000_0000_0000_0011;		//3
+  #t
+  $display("BCD = 3 | Result: %b", out);
+  #t
   
   
   $finish;
