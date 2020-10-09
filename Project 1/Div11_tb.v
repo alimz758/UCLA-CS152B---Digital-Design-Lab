@@ -7,19 +7,22 @@ module Div11_tb();
 	initial begin 
 		d = 16'b0000_0000_0001_0001;
 		#50
-		$display("%b", div);
+		$display("%x div by 11 = %d", d, div);
 		d = 16'b0000_0000_0001_0010;
 		#50
-		$display("%b", div);
+		$display("%x div by 11 = %d", d, div);
 		d = 16'b0000_0000_0010_0010;
 		#50
-		$display("%b", div);
+		$display("%x div by 11 = %d", d, div);
 		d = 16'b1001_0000_1001_0000;
 		#50
-		$display("%b", div);
+		$display("%x div by 11 = %d", d, div);
 		d = 16'b1001_0000_1001_0111;
 		#50
-		$display("%b", div);
-		$finish;
+		$display("%x div by 11 = %d", d, div);
+		d = 16'b0000_1001_0000_0010;
+		#50
+		$display("%x div by 11 = %d", d, div);
+ 		$finish;
 	end
-endmodule;
+endmodule
