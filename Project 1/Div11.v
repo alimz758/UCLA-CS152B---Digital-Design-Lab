@@ -16,9 +16,18 @@ assign d2 = inp[11:8];
 assign d3 = inp[7:4];
 assign d4 = inp[3:0];
 
-wire [3:0] mod;
-assign mod = d1 - d2 + d3 - d4;
+wire [6:0] d13;
+add add_d13(.op1({2'b0, d1}), .op2({2'b0, d3}), .out(d13));
 
-assign divisible = (mod == -11) || (mod == 0) || (mod == 11);
+wire [6:0] d24;
+add add_d24(.op1({2'b0, d2}), .op2({2'b0, d4}), .out(d24));
+
+wire [6:0] neg_d24;
+assign neg_d24 = ~d24;
+
+wire [6:0] mod;
+add add_d1324(.op1(d13), .op2(neg_d24), .out(mod));
+
+assign divisible = (mod == 7'b0111111) || (mod == 7'b1001010) || (mod == 7'b0110100);
 
 endmodule
