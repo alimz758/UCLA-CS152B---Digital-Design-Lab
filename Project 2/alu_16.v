@@ -319,7 +319,7 @@ module alu_16(
             begin
               Result = (A<=B)?16'd1:16'd0;
               //temp = (A<=B)?15'd1:15'd0;
-            	if (subtract <= 0)
+		    if (subtract[15] == 0)
 	           	 	temp = 16'd1;
              	else
                 	temp = 16'd0;
