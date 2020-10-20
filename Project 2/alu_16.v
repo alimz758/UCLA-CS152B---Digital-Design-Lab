@@ -25,7 +25,7 @@
 ----------------------------------------------------------------------
 | 1010  |   ALU_Out = A >> 1;	logical shift right
 ----------------------------------------------------------------------
-| 1001  |   ALU_Out = 1 if A>= B else 0;	set less than or equal to
+| 1001  |   ALU_Out = 1 if A<= B else 0;	set less than or equal to
 ----------------------------------------------------------------------*/
 module addbit(s, cout, cin, a, b);
 
@@ -79,7 +79,7 @@ endmodule
 module alu_16(
   input signed [15:0]  A,B,	
   input [3:0] ALUCtrl,
-  output [15:0] S,
+  output signed [15:0] S,
   output zero,
   output OverFlow
     );
@@ -112,45 +112,36 @@ module alu_16(
   //subtracting 1 from A
   full_adder fl5(.sum(sub_A), .c_in(1'b0), .aa(A), .bb(16'b1111111111111111), .c_out(c_out));
   
-  always @(*)
+  always @(ALUCtrl)
     begin
         case(ALUCtrl)
           4'b0000:	// subtraction
             
             begin
-            Result = A - B;
             temp = subtract;
+            overflow_temp = 0;
 
             if (temp == 16'd0)
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-
-            if (temp == Result)
-                $display("CORRECT");
-            else
-                $display("WRONG, correct value is: %b", Result);
+              
             end
           
           4'b0001:	// Addition
             begin
-            Result = A + B;
             temp = sum;
+            overflow_temp = 0;
               
             if (temp == 16'd0)
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-              
-          	if (temp == Result)
-              	$display("CORRECT");
-            else
-            	$display("WRONG, correct value is: %b", Result);
             end
           
           4'b0010:	//bitwise OR
             begin
-            Result = A | B;
+            overflow_temp = 0;
             for (i = 0; i < 16; i = i + 1) 
               begin
             	if (A[i] == 0 && B[i] == 0)
@@ -163,16 +154,11 @@ module alu_16(
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-              
-            if (temp == Result)
-              $display("CORRECT");
-            else
-              $display("WRONG");
               end
           
           4'b0011:	//bitwise AND
 			begin
-            Result = A & B;
+            overflow_temp = 0;
             for (i = 0; i < 16; i = i + 1) 
               begin
               	if (A[i] == 1 && B[i] == 1)
@@ -185,69 +171,49 @@ module alu_16(
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-              
-            if (temp == Result)
-              $display("CORRECT");
-            else
-              $display("WRONG");
+
             end
           
           4'b0100:	// subtract 1 form A
             begin
-            Result = A - 1'b1;
+            overflow_temp = 0;
 			temp = sub_A;
               
             if (temp == 16'd0)
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-              
-			if (temp == Result)
-            	$display("CORRECT");
-            else
-            	$display("WRONG");
             end
           
           4'b0101: // add 1 to A
             begin
-            Result = A + 1'b1;
+            overflow_temp = 0;
             temp = sum_A;
               
             if (temp == 16'd0)
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-              
-			if (temp == Result)
-            	$display("CORRECT");
-            else
-            	$display("WRONG");
             end
           
           4'b0110: //invert
             begin
+              overflow_temp = 0;
               for (i = 0; i < 16; i = i +1) begin
                 if(A[i] == 0)
                   temp[i] = 1;
                 else
                   temp[i] = 0;
               end
-            	Result = ~A;
 
             if (temp == 16'd0)
               zero_temp = 16'd1;
             else
               zero_temp = 16'd0;
-              
-            if (temp == Result)
-              $display("CORRECT");
-            else
-              $display("WRONG");
             end
           
           4'b1100:	//arithmetic shift left
             begin
-            Result = A <<< 1;
             temp[15:0] = {A[15:0],1'b0};
               
             if (temp == 16'd0)
@@ -259,16 +225,10 @@ module alu_16(
               overflow_temp = 1;
             else
               overflow_temp = 0;
-              
-            if (temp == Result)
-              $display("CORRECT");
-            else
-               $display("WRONG, correct value is: %b", Result);
             end
           
           4'b1110:	//arithmetic shift right
             begin
-              Result = A >>> 1;
               temp[15:0] = {A[15],A[15:1]};
               
               if (A[15] != temp[15])
@@ -280,46 +240,33 @@ module alu_16(
                 zero_temp = 16'd1;
               else
                 zero_temp = 16'd0;
-              if (temp == Result)		// why is the verilog operation giving a different value?
-        	      $display("CORRECT");
-	          else
-    	          $display("WRONG, correct value is: %b", Result);
             end
           
           4'b1000:	//logical shift left
             
             begin
-            Result = A <<< 1;
+            overflow_temp = 0;
               temp[15:0] = {A[15:0],1'b0};
               if (temp == 16'd0)
                 zero_temp = 16'd1;
               else
                 zero_temp = 16'd0;
-			  if (temp == Result)
-              	$display("CORRECT");
-              else
-            	$display("WRONG, correct value is: %b", Result);
             end
           
           4'b1010:	//logical shift right
             begin
-            Result = A >> 1;
+            overflow_temp = 0;
               temp[15:0] = {1'b0,A[15:1]};
               if (temp == 16'd0)
                 zero_temp = 16'd1;
               else
                 zero_temp = 16'd0;
-			  if (temp == Result)
-              	$display("CORRECT");
-              else
-            	$display("WRONG, correct value is: %b", Result);
             end
           
           4'b1001:	//set less than or equal
             begin
-              Result = (A<=B)?16'd1:16'd0;
-              //temp = (A<=B)?15'd1:15'd0;
-		    if (subtract[15] == 0)
+              overflow_temp = 0;
+              if (subtract[15] == 1)
 	           	 	temp = 16'd1;
              	else
                 	temp = 16'd0;
@@ -327,13 +274,7 @@ module alu_16(
                 	zero_temp = 16'd1;
               	else
                	 	zero_temp = 16'd0;
-				if (temp == Result)
-             		$display("CORRECT");
-          		else
-            		$display("WRONG, correct value is: %b", Result);
              	end
-                
-          
           //default: //$display("Nothing Happened");
         endcase
     end
