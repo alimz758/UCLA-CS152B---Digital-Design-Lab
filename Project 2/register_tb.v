@@ -46,12 +46,12 @@ Rw = 1;
 busW = 3;
 Ra = 1;
 #10
-WrEn = 0;
 $display("register 1 = %d", busA);
 
-// reset everything
+// reset everything (but with WrEn set to 1 to make sure that rst has higher precedence)
 rst = 1;
 #10
+WrEn = 0;
 rst = 0;
 #10
 

@@ -19,17 +19,14 @@ output reg [15:0] busB;
 
 reg [15:0] registers [31:0];
 
+integer reset_i;
+
 always @(posedge clk) begin
 	if (rst) begin
 		// reset
-		registers[0] <= 16'b0; registers[1] <= 16'b0; registers[2] <= 16'b0; registers[3] <= 16'b0;
-		registers[4] <= 16'b0; registers[5] <= 16'b0; registers[6] <= 16'b0; registers[7] <= 16'b0;
-		registers[8] <= 16'b0; registers[9] <= 16'b0; registers[10] <= 16'b0; registers[11] <= 16'b0;
-		registers[12] <= 16'b0; registers[13] <= 16'b0; registers[14] <= 16'b0; registers[15] <= 16'b0;
-		registers[16] <= 16'b0; registers[17] <= 16'b0; registers[18] <= 16'b0; registers[19] <= 16'b0;
-		registers[20] <= 16'b0; registers[21] <= 16'b0; registers[22] <= 16'b0; registers[23] <= 16'b0;
-		registers[24] <= 16'b0; registers[25] <= 16'b0; registers[26] <= 16'b0; registers[27] <= 16'b0;
-		registers[28] <= 16'b0; registers[29] <= 16'b0; registers[30] <= 16'b0; registers[31] <= 16'b0;
+		for (reset_i = 0; reset_i < 32; reset_i = reset_i + 1) begin
+			registers[reset_i] <= 16'b0;
+		end
 		busA <= 16'b0;
 		busB <= 16'b0;
 	end else if (WrEn) begin
