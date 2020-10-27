@@ -1,0 +1,46 @@
+{C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m21_tb.v} {2 {vlog -work work -stats=none {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m21_tb.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module m21_tb
+** Warning: C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m21_tb.v(31): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+
+Top level modules:
+	m21_tb
+
+} {} {}} {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m31.v} {2 {vlog -work work -stats=none {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m31.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module m31
+** Warning: C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m31.v(11): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+
+Top level modules:
+	m31
+
+} {} {}} {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/addbit_tb.v} {2 {vlog -work work -stats=none {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/addbit_tb.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module addbit_tb
+** Warning: C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/addbit_tb.v(50): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+
+Top level modules:
+	addbit_tb
+
+} {} {}} {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m31_tb.v} {2 {vlog -work work -stats=none {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m31_tb.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module m31_tb
+** Warning: C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m31_tb.v(58): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+
+Top level modules:
+	m31_tb
+
+} {} {}} {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m21.v} {2 {vlog -work work -stats=none {C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m21.v}
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module m21
+** Warning: C:/Users/alimz/Desktop/UCLA-CS152B---Digital-Design-Lab/Project 2/m21.v(15): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+
+Top level modules:
+	m21
+
+} {} {}}
