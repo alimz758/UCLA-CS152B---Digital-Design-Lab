@@ -15,7 +15,7 @@ parameter state1 = 3'b000,
           state5 = 3'b100,
           state6 = 3'b101,
           state7 = 3'b110,
-         // state8 = 3'b111;
+          state8 = 3'b111;
 parameter SIZE = 3;
 
 reg [SIZE-1:0] cur_state;
@@ -139,11 +139,20 @@ always @(cur_state or walk_button or sensor) begin
 				next_state <= state7;
           end
 		///main red side green
-		//state8:
-		//	if (timer == 3'b011)
-		//		next_state <= state7;
-		//	else 
-		//		next_state <= state8;
+		state8:
+		begin		
+		    main_green = 0;
+		    main_yellow = 0;
+		    main_red = 1;
+		    side_green = 1;
+		    side_yellow = 0;
+		    side_red = 0;
+		    walk_light = 0;
+			if (timer == 3'b011)
+				next_state <= state7;
+			else 
+				next_state <= state8;
+		end
 		endcase
 end
 
