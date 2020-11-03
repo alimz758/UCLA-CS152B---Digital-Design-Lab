@@ -151,7 +151,7 @@ always @(cur_state or walk_button or sensor) begin
 				next_state <= state7;
 			else 
 				next_state <= state8;
-			end
+		end
 	endcase
 end
 
