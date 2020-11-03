@@ -38,126 +38,121 @@ always @(cur_state or walk_button or sensor) begin
 	case(cur_state)
 		//****Main: green -- Side: red -- Walk Signal: Off ***//
 		state1:
-          begin
-            main_green = 1;
-            main_yellow = 0;
-            main_red = 0;
-            side_green = 0;
-            side_yellow = 0;
-            side_red = 1;
-            walk_light = 0;
-            
+		begin
+			main_green = 1;
+			main_yellow = 0;
+			main_red = 0;
+			side_green = 0;
+			side_yellow = 0;
+			side_red = 1;
+			walk_light = 0;
 			if (sensor == 1'b0 && timer == 3'b110)
 				next_state <= state2;
 			else if (sensor == 1'b1 && timer == 3'b110)
 				next_state <= state3;
 			else 
 				next_state <= state1;
-          end
+		end
 		//second state, half way(6s) of main green
 		state2:
-			begin
+		begin
 			if (timer == 3'b110) 
 				next_state <= state4;
 			else
 				next_state <= state2;
-			end
+		end
 		// half way(6s) main street green 
 		state3:
-			begin
+		begin
 			if (timer == 3'b011) 
 				next_state <= state4;
 			else
 				next_state <= state3;
-			end
+		end
 		//****Main: yellow -- Side: red -- Walk Signal: Off ***//
 		state4:
-          begin
-            main_green = 0;
-            main_yellow = 1;
-            main_red = 0;
-            side_green = 0;
-            side_yellow = 0;
-            side_red = 1;
-            walk_light = 0;
-            
+		begin
+			main_green = 0;
+			main_yellow = 1;
+			main_red = 0;
+			side_green = 0;
+			side_yellow = 0;
+			side_red = 1;
+			walk_light = 0;
+            	
 			if (walk_button == 1'b0  && timer == 3'b010) 
 				next_state <= state5;
 			else if (walk_button == 1'b1  && timer == 3'b010) begin
 				walk_light = 1;
 				next_state <= state6;
-			end
-			else 
+			end else 
 				next_state <= state4;
-          end
+          	end
 		//****Main: red -- Side: green -- Walk Signal: Off ***//
 		state5:
-          begin
-            main_green = 0;
-            main_yellow = 0;
-            main_red = 1;
-            side_green = 1;
-            side_yellow = 0;
-            side_red = 0;
-            walk_light = 0;
-            
+		begin
+			main_green = 0;
+			main_yellow = 0;
+			main_red = 1;
+			side_green = 1;
+			side_yellow = 0;
+			side_red = 0;
+			walk_light = 0;
 			if (sensor == 1'b0 && timer >=3'b110) 
 				next_state <= state7;
 			else if (sensor == 1'b1 && timer >=3'b110) 
 				next_state <= state8;
 			else 
 				next_state <= state5;
-          end
+		end
 		//****Main: Red -- Side: red -- Walk Signal: ON ***//
 		state6:
-          begin
-            main_green = 0;
-            main_yellow = 0;
-            main_red = 1;
-            side_green = 0;
-            side_yellow = 0;
-            side_red = 1;
-            walk_light = 1;
-            
+		begin
+			main_green = 0;
+			main_yellow = 0;
+			main_red = 1;
+			side_green = 0;
+			side_yellow = 0;
+			side_red = 1;
+			walk_light = 1;
 			if (timer == 3'b011) begin
 				walk_light = 0;
 				next_state <= state5;
 			end
 			else
 				next_state <= state6;
-          end
+		end
 		//****Main: red -- Side: yellow -- Walk Signal: Off ***//
 		state7:
-          begin
-            main_green = 0;
-            main_yellow = 0;
-            main_red = 1;
-            side_green = 0;
-            side_yellow = 1;
-            side_red = 0;
-            walk_light = 0;
-            
+		begin
+			main_green = 0;
+			main_yellow = 0;
+			main_red = 1;
+			side_green = 0;
+			side_yellow = 1;
+			side_red = 0;
+			walk_light = 0;
 			if (timer == 3'b010)
 				next_state <= state1;
 			else 
 				next_state <= state7;
-          end
+		end
 		///main red side green
 		state8:
 		begin		
-		    main_green = 0;
-		    main_yellow = 0;
-		    main_red = 1;
-		    side_green = 1;
-		    side_yellow = 0;
-		    side_red = 0;
-		    walk_light = 0;
+			main_green = 0;
+			main_yellow = 0;
+			main_red = 1;
+			side_green = 1;
+			side_yellow = 0;
+			side_red = 0;
+			walk_light = 0;
 			if (timer == 3'b011)
 				next_state <= state7;
 			else 
 				next_state <= state8;
-		end
-		endcase
+			end
+	endcase
 end
 
 //updating timer
