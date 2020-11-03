@@ -56,16 +56,20 @@ always @(cur_state or walk_button or sensor) begin
           end
 		//second state, half way(6s) of main green
 		state2:
+			begin
 			if (timer == 3'b110) 
 				next_state <= state4;
 			else
 				next_state <= state2;
+			end
 		// half way(6s) main street green 
 		state3:
+			begin
 			if (timer == 3'b011) 
 				next_state <= state4;
 			else
 				next_state <= state3;
+			end
 		//****Main: yellow -- Side: red -- Walk Signal: Off ***//
 		state4:
           begin
