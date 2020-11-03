@@ -30,10 +30,14 @@ clock clock(.clk(clk), .out(new_clk));
 initial begin 
 	timer = 0;
 	walk_light = 0;
+	// ADDED
+	cur_state = 3'b000;
 end
 
 //assigning the next state
-always @(cur_state or walk_button or sensor) begin
+//always @(cur_state or walk_button or sensor) begin
+	// new_clk added
+always @(cur_state or walk_button or sensor or new_clk) begin
 	next_state = 3'b000;
 	case(cur_state)
 		//****Main: green -- Side: red -- Walk Signal: Off ***//
@@ -158,14 +162,14 @@ end
 //updating timer
 always @(posedge new_clk) begin
 	//if state has been changed
+	// TIMER MOVED UP HERE
+	timer = timer + 3'b001;
 	if (next_state != cur_state) begin
 		cur_state = next_state;
 		timer = 3'b000;
 	end
-	timer = timer + 3'b001;
+	//timer = timer + 3'b001;
 end
 
-
-//TODO: Updating light registers depending on cur_state
 
 endmodule
