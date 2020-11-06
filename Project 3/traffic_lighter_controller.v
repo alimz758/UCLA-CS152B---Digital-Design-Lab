@@ -1,10 +1,10 @@
 module traffic_light_controller(walk_light, main_green, main_yellow, main_red, 
-				side_green, side_yellow, side_red, clk, sensor, walk_button);
+				side_green, side_yellow, side_red, clk, sensor, walk_button, new_clk);
 
 input clk, sensor, walk_button;
 output reg walk_light, main_green, main_yellow, main_red, 
 	side_green, side_yellow, side_red;
-
+output wire new_clk;
 
 
 // defining 8 states
@@ -32,13 +32,13 @@ initial begin
 	walk_light = 0;
 	// ADDED
 	cur_state = 3'b000;
+	next_state = 3'b000;
 end
 
 //assigning the next state
 //always @(cur_state or walk_button or sensor) begin
 	// new_clk added
 always @(cur_state or walk_button or sensor or new_clk) begin
-	next_state = 3'b000;
 	case(cur_state)
 		//****Main: green -- Side: red -- Walk Signal: Off ***//
 		state1:
@@ -50,9 +50,9 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 			side_yellow = 0;
 			side_red = 1;
 			walk_light = 0;
-			if (sensor == 1'b0 && timer == 3'b110)
+			if (sensor == 1'b0 && timer == 3'b101)
 				next_state <= state2;
-			else if (sensor == 1'b1 && timer == 3'b110)
+			else if (sensor == 1'b1 && timer == 3'b101)
 				next_state <= state3;
 			else 
 				next_state <= state1;
@@ -60,7 +60,7 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 		//second state, half way(6s) of main green
 		state2:
 		begin
-			if (timer == 3'b110) 
+			if (timer == 3'b101) 
 				next_state <= state4;
 			else
 				next_state <= state2;
@@ -68,7 +68,7 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 		// half way(6s) main street green 
 		state3:
 		begin
-			if (timer == 3'b011) 
+			if (timer == 3'b010) 
 				next_state <= state4;
 			else
 				next_state <= state3;
@@ -84,9 +84,9 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 			side_red = 1;
 			walk_light = 0;
             	
-			if (walk_button == 1'b0  && timer == 3'b010) 
+			if (walk_button == 1'b0  && timer == 3'b001) 
 				next_state <= state5;
-			else if (walk_button == 1'b1  && timer == 3'b010) begin
+			else if (walk_button == 1'b1  && timer == 3'b001) begin
 				walk_light = 1;
 				next_state <= state6;
 			end else 
@@ -102,9 +102,9 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 			side_yellow = 0;
 			side_red = 0;
 			walk_light = 0;
-			if (sensor == 1'b0 && timer >=3'b110) 
+			if (sensor == 1'b0 && timer >=3'b101) 
 				next_state <= state7;
-			else if (sensor == 1'b1 && timer >=3'b110) 
+			else if (sensor == 1'b1 && timer >=3'b101) 
 				next_state <= state8;
 			else 
 				next_state <= state5;
@@ -119,7 +119,7 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 			side_yellow = 0;
 			side_red = 1;
 			walk_light = 1;
-			if (timer == 3'b011) begin
+			if (timer == 3'b010) begin
 				walk_light = 0;
 				next_state <= state5;
 			end
@@ -136,7 +136,7 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 			side_yellow = 1;
 			side_red = 0;
 			walk_light = 0;
-			if (timer == 3'b010)
+			if (timer == 3'b001)
 				next_state <= state1;
 			else 
 				next_state <= state7;
@@ -151,7 +151,7 @@ always @(cur_state or walk_button or sensor or new_clk) begin
 			side_yellow = 0;
 			side_red = 0;
 			walk_light = 0;
-			if (timer == 3'b011)
+			if (timer == 3'b010)
 				next_state <= state7;
 			else 
 				next_state <= state8;

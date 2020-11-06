@@ -3,7 +3,7 @@ clk, out
 );
 
 input clk;
-output reg out = 0;
+output reg out = 1;
 
 reg [15:0] counter = 0;
 
