@@ -1,4 +1,4 @@
-module low_pass_filter (
+module median_filter (
 image_input, enable, enable_process, clk, image_output, finish
 );
 
