@@ -1,9 +1,10 @@
 function [ noise_image ] = add_noise( image , black , white , range )
     % Detailed explanation goes here
-    g_image = rgb2gray(image); %balck and white the image
+    I = imread(image);
+    g_image = rgb2gray(I); %balck and white the image
     imwrite(g_image , '../grey_image.jpeg');
     [ y , x ] = size(g_image); % create a matrix of size image
-    random_value = randi(y , x , [0 range]);
+    random_value = randi([0, range], y, x);
     noise_image = g_image;
     for i = 1 : y
         for j = 1 : x
