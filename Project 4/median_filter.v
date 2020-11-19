@@ -20,8 +20,8 @@ parameter middle = TOTAL_WINDOW_SIZE >> 1; //divide by 2
 // image buffer to read the input image into
 reg [7:0] image_buff[0:WIDTH][0:HEIGHT];
 reg [7:0] final_output[0:WIDTH][0:HEIGHT];
-reg [7:0] read_loc_width = 0;
-reg [7:0] read_loc_height = 0;
+reg [14:0] read_loc_width = 0;
+reg [14:0] read_loc_height = 0;
 reg [7:0] window_array[0:TOTAL_WINDOW_SIZE]; 
 reg [7:0] temp;
 reg [TOTAL_WINDOW_SIZE-1:0] WINDOW_COUNTER = 0;
