@@ -27,12 +27,12 @@ reg [31:0] test_counter;
 
 
 initial begin
-  bright = 'd5;
+  bright = 'd55;
   clk = 0;
-  do_bright = 1;
+  do_bright = 0;
   enable = 0;
   enable_process = 0;
-  data_file = $fopen("sample.txt", "r");
+  data_file = $fopen("noisy.txt", "r");
   if (data_file == `NULL) begin
   $display("data_file handle was NULL");
   $finish;
@@ -50,12 +50,15 @@ if (!$feof(data_file)) begin
 //use captured_data as you would any other wire or reg value;
 image_input = data;
 end
+//$display("OUTPUT IS: %0d", image_output);
 if (finish == 1)
 begin
 $display("FINISHED PROCESSING");
 enable = 0;
 enable_process = 1;
 end
+
+
 
 if (finish == 0 && enable_process == 1)
 begin
@@ -64,6 +67,7 @@ $display("FINISHED CALCULATION");
 end
 
 end
+
 
   always
 	 #1 clk = !clk;
