@@ -28,7 +28,7 @@ initial begin
 enable = 1;
 enable_process = 0;
 
-fd = $fopen("noisy.txt", "r");
+fd = $fopen("noisy_image.text", "r");
 for (i = 0; i < WIDTH * HEIGHT; i = i + 1) begin
 	$fscanf(fd, "%d,", image_input);
 	#2;
@@ -36,13 +36,16 @@ end
 $fclose(fd);
 
 enable = 0;
-do_bright = 1;
-bright = 10;
+
+// do_bright = 1;
+do_bright = 0;
+
+bright = 70;
 enable_process = 1;
 #1;
 
-out_fd = $fopen("brightness_up.txt", "w");
-//out_fd = $fopen("brightness_down.txt", "w");
+//out_fd = $fopen("brightness_up.txt", "w");
+out_fd = $fopen("brightness_down.txt", "w");
 for (i = 0; i < WIDTH * HEIGHT - 1; i = i + 1) begin
 	$fwrite(out_fd, "%d,", image_output);
 	#2;

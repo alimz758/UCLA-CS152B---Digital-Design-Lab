@@ -35,7 +35,7 @@ initial begin
 enable = 1;
 enable_process = 0;
 
-fd = $fopen("noisy.txt", "r");
+fd = $fopen("noisy_image.text", "r");
 for (i = 0; i < WIDTH * HEIGHT; i = i + 1) begin
 	$fscanf(fd, "%d,", image_input);
 	#2;
@@ -43,14 +43,15 @@ end
 $fclose(fd);
 
 enable = 0;
-scale = 1;
+// scale = 1;
+scale = 0;
 enable_process = 1;
 #1;
 
-out_fd = $fopen("resize_up.txt", "w");
-//out_fd = $fopen("resize_down.txt", "w");
-for (i = 0; i < (WIDTH*FILTER_SIZE) * (HEIGHT*FILTER_SIZE) - 1; i = i + 1) begin  // For scale up
-//for (i = 0; i < (padded_WIDTH/FILTER_SIZE) * (padded_HEIGHT/FILTER_SIZE) - 1; i = i + 1) begin	// For scale down
+// out_fd = $fopen("resize_up.txt", "w");
+out_fd = $fopen("resize_down.txt", "w");
+//for (i = 0; i < (WIDTH*FILTER_SIZE) * (HEIGHT*FILTER_SIZE) - 1; i = i + 1) begin  // For scale up
+for (i = 0; i < (padded_WIDTH/FILTER_SIZE) * (padded_HEIGHT/FILTER_SIZE) - 1; i = i + 1) begin	// For scale down
 	$fwrite(out_fd, "%d,", image_output);
 	//$display("%0d", image_output);
 	#2;

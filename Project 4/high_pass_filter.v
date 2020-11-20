@@ -61,11 +61,13 @@ always @(posedge clk) begin
 			end
 		end
 		// subtract the average from the current pixel to sharpen
-		sum = sum / 12;
-		if (image_buff[write_loc_width+1][write_loc_height+1] < sum) begin
+		sum = sum / 9;
+		if (2 * image_buff[write_loc_width+1][write_loc_height+1] < sum) begin
 			image_output = 0;
+		end else if (2 * image_buff[write_loc_width+1][write_loc_height+1] - sum > 255) begin
+			image_output = 255;
 		end else begin
-			image_output = image_buff[write_loc_width+1][write_loc_height+1] - sum;
+			image_output = 2 * image_buff[write_loc_width+1][write_loc_height+1] - sum;
 		end
 
 		// move to next pixel

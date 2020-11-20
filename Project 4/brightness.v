@@ -40,7 +40,7 @@ always @(posedge clk) begin
 		image_buff[read_loc_width][read_loc_height] = image_input;
 		//$display("LOC WIDTH: %d, LOC HEIGHT: %d", read_loc_width, read_loc_height);
 		// move to the next pixel in the same height
-		$display("INPUT IS: %0d", image_input);
+		// $display("INPUT IS: %0d", image_input);
 		read_loc_width = read_loc_width + 1;
 		if (read_loc_width == WIDTH) 
           	begin
@@ -59,8 +59,8 @@ always @(posedge clk) begin
     begin
       if (do_bright == 1)
 	begin 
-	if ( (image_buff[write_loc_width][write_loc_height] + bright) > 256) begin
-	image_output = 256;
+	if ( (image_buff[write_loc_width][write_loc_height] + bright) > 255) begin
+	image_output = 255;
 	end
 	else begin
 	image_output = image_buff[write_loc_width][write_loc_height] + bright;
