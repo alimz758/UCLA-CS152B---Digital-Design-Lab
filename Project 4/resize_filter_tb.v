@@ -16,6 +16,10 @@ module resize_filter_tb();
 
   parameter WIDTH = 410;
   parameter HEIGHT = 361;
+
+  parameter padded_WIDTH = WIDTH + 1;
+  parameter padded_HEIGHT = HEIGHT + 2;
+
   parameter FILTER_SIZE = 3;
   
 resize_filter resize_filter_tb(.clk(clk), .scale(scale), .image_input(image_input), .enable(enable), .enable_process(enable_process), .image_output(image_output), .finish(finish));
@@ -39,12 +43,14 @@ end
 $fclose(fd);
 
 enable = 0;
-enable_process = 1;
 scale = 1;
+enable_process = 1;
 #1;
 
-out_fd = $fopen("resize_test.txt", "w");
-for (i = 0; i < (WIDTH*FILTER_SIZE) * (HEIGHT*FILTER_SIZE) - 1; i = i + 1) begin
+out_fd = $fopen("resize_up.txt", "w");
+//out_fd = $fopen("resize_down.txt", "w");
+for (i = 0; i < (WIDTH*FILTER_SIZE) * (HEIGHT*FILTER_SIZE) - 1; i = i + 1) begin  // For scale up
+//for (i = 0; i < (padded_WIDTH/FILTER_SIZE) * (padded_HEIGHT/FILTER_SIZE) - 1; i = i + 1) begin	// For scale down
 	$fwrite(out_fd, "%d,", image_output);
 	//$display("%0d", image_output);
 	#2;
