@@ -36,7 +36,7 @@ reg [10:0] padded_write_loc_width = 0;
 
 reg [10:0] write_up_height = 0;
 reg [10:0] write_up_width = 0;
-  
+
 integer i, j, k, l;
 integer sum = 0;
 
