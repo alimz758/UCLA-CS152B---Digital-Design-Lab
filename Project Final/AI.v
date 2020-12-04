@@ -1,4 +1,3 @@
-
 // Code your design here
 module AI2 (board_state, clk, next_move1, next_move2, enable_play, enable);
   
@@ -11,9 +10,9 @@ module AI2 (board_state, clk, next_move1, next_move2, enable_play, enable);
   
   // opponent = 0, ai = 1, empty = 2
   integer i, j;
-  integer empty = 2;
-  integer ai = 1;
-  integer opponent = 0;
+  integer empty = 0;
+  integer ai = 2;
+  integer opponent = 1;
   reg [1:0] b_temp [0:2][0:2];
 
   reg[4:0] read_row = 0;
@@ -23,7 +22,7 @@ always @(posedge clk)
 begin
 		if (enable == 1) begin
 		b_temp[read_row][read_col] = board_state;
-		$display("INPUT IS: %0d", board_state);
+		//$display("INPUT IS: %0d", board_state);
 		
 		read_col = read_col + 1;
 		if (read_col == 3) 
@@ -39,6 +38,69 @@ begin
 		end
 	end
 	else if (enable_play == 1) begin
+      
+    /**** AI plays normally ****/
+      if (b_temp[0][1] == empty)
+        begin
+          next_move1 = 0;
+          next_move2 = 1;
+        end
+      
+      if (b_temp[1][2] == empty)
+        begin
+          next_move1 = 1;
+          next_move2 = 2;
+        end
+      
+      if (b_temp[2][1] == empty)
+        begin
+          next_move1 = 2;
+          next_move2 = 1;
+        end
+      
+      if (b_temp[1][0] == empty)
+        begin
+          next_move1 = 1;
+          next_move2 = 0;
+        end
+      
+      /**** Corner moves ****/
+      if (b_temp[0][0] == empty)
+        begin
+          next_move1 = 0;
+          next_move2 = 0;
+        end
+      
+      if (b_temp[2][0] == empty)
+        begin
+          next_move1 = 2;
+          next_move2 = 0;
+        end
+      
+      if (b_temp[2][2] == empty)
+        begin
+          next_move1 = 2;
+          next_move2 = 2;
+        end
+      
+      if (b_temp[0][2] == empty)
+        begin
+          next_move1 = 0;
+          next_move2 = 2;
+        end
+      
+      /**** center move ****/
+      
+      if (b_temp[1][1] == empty)
+        begin
+          next_move1 = 1;
+          next_move2 = 1;
+        end
+      
+      
+      
+      
+    /**** ENDOF AI plays normally ****/
 
 	/**** AI checks if it can defend ****/
 	for (i = 0; i < 3; i = i + 1) 	// row check
@@ -170,8 +232,6 @@ begin
 		next_move2 = 2;
 	   end
 	/**** ENDOF AI checks if it can win ****/
-
- // TODO: implement normal play
 	
     end
 end
