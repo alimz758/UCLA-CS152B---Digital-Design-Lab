@@ -10,9 +10,9 @@ module AI2 (board_state, clk, next_move1, next_move2, enable_play, enable);
   
   // opponent = 0, ai = 1, empty = 2
   integer i, j;
-  integer empty = 0;
-  integer ai = 2;
-  integer opponent = 1;
+  integer empty = 2;
+  integer ai = 1;
+  integer opponent = 0;
   reg [1:0] b_temp [0:2][0:2];
 
   reg[4:0] read_row = 0;
