@@ -67,8 +67,10 @@ module whoWon(clk, board_state, who_won);
 			
 			for (i=0; i<3; i=i+1) begin
 				for (j=0; j<3; j=j+1) begin
-					if (board_state[i][j] == 2)
+					if (board_state[i][j] == 2) begin
 						temp = 1;
+						break;
+					end
 				end
 				if (temp == 1)
 					who_won = 3; //not over yet
