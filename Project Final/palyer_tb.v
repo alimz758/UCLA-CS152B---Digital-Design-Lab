@@ -9,7 +9,7 @@ module player_tb();
 	integer i, j;
 
 	player player(.clk(clk), .board_state(board_state), .next_move1_in(next_move1_in), .next_move2_in(next_move2_in),  .next_move1_out(next_move1_out), .next_move2_out(next_move2_out));
-	whoWon(.clk(clk), .board_state(board_state), .who_won(who_won));
+	whoWon win(.clk(clk), .board_state(board_state), .who_won(who_won));
 
 
 	initial begin
