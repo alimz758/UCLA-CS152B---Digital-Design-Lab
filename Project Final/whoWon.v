@@ -72,11 +72,11 @@ module whoWon(clk, board_state, who_won);
 						break;
 					end
 				end
-				if (temp == 1)
-					who_won = 3; //not over yet
-				else
-					who_won = 2; //draw
 			end
+			if (temp == 1)
+				who_won = 3; //not over yet
+			else
+				who_won = 2; //draw
 		end
 		
 	end
