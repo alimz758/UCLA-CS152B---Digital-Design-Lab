@@ -37,7 +37,6 @@ module whoWon(clk, board_state, who_won);
 				temp_win = 0;
 			else if (board_state[0][0] == 1)
 				temp_win = 1;
-			$display("in won ", temp_win);
 		end
 		// second col pattern
 		else if (board_state[0][1] == board_state[1][1] && board_state[0][1] ==  board_state[2][1]) begin
