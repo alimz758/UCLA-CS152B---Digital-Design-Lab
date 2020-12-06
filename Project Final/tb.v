@@ -1,3 +1,5 @@
+
+
 module player_tb();
 
 	reg clk;
@@ -6,6 +8,7 @@ module player_tb();
 	reg [1:0] next_move2_in;
 	wire [1:0] next_move1_out;
 	wire [1:0] next_move2_out;
+	wire [2:0] who_won;
 	integer i, j;
 
 	player player(.clk(clk), .board_state(board_state), .next_move1_in(next_move1_in), .next_move2_in(next_move2_in),  .next_move1_out(next_move1_out), .next_move2_out(next_move2_out));
@@ -23,47 +26,52 @@ module player_tb();
 		//p1 playing
 		next_move1_in = 0;
 		next_move2_in = 0;
-		$display(next_move1_out, next_move2_out);
+		#2;
+		$display("P1 next move %0d %0d", next_move1_out, next_move2_out);
 		board_state[next_move1_out][next_move2_out] = 0;
 		#2;
 
 		//p2 playing
 		next_move1_in = 0;
 		next_move2_in = 1;
-		$display(next_move1_out, next_move2_out);
+		#2;
+		$display("p2 next move %0d %0d",next_move1_out, next_move2_out);
 		board_state[next_move1_out][next_move2_out] = 1;
 		#2;
 
 		//p1 playing
 		next_move1_in = 1;
 		next_move2_in = 0;
-		$display(next_move1_out, next_move2_out);
+		#2;
+		$display("P1 next move %0d %0d",next_move1_out, next_move2_out);
 		board_state[next_move1_out][next_move2_out] = 0;
 		#2;
 
 		//p2 playing
 		next_move1_in = 0;
 		next_move2_in = 2;
-		$display(next_move1_out, next_move2_out);
+		#2;
+		$display("P2 next move %0d %0d",next_move1_out, next_move2_out);
 		board_state[next_move1_out][next_move2_out] = 1;
 		#2;
 
 		//p1 playing
 		next_move1_in = 2;
 		next_move2_in = 0;
-		$display(next_move1_out, next_move2_out);
+		//#2;
+		$display("P1 next move %0d %0d",next_move1_out, next_move2_out);
 		board_state[next_move1_out][next_move2_out] = 0;
-		#2;
+		#5;
 
 		$finish;
 	end
-
+	
 
 	always begin
 		#1 clk = !clk;
 	end
 	always @(posedge clk) begin
-
+		$display("here", who_won);
 		if (who_won == 0) 
 			$display("player 1 won");
 		if (who_won == 1) 

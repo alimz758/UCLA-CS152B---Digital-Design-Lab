@@ -13,18 +13,18 @@ module player(clk, board_state, next_move1_in, next_move2_in,  next_move1_out, n
 		if (next_move1_in >=0 && next_move1_in <=2 && next_move2_in >=0 && next_move2_in <=2) begin
 			if (board_state[next_move1_in][next_move2_in] == 2) begin
 				next_move1_out = next_move1_in;
-				next_move1_out = next_move2_in;
+				next_move2_out = next_move2_in;
 			end
 			else begin
 				$display("This spot is taken\n");
 				next_move1_out = 2;
-				next_move1_out = 2;
+				next_move2_out = 2;
 			end
 		end
 		else begin
 			$display("This spot is outside of the grid\n");
 			next_move1_out = 2;
-			next_move1_out = 2;
+			next_move2_out = 2;
 		end
 	end
 endmodule;
