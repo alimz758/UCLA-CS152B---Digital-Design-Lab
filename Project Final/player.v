@@ -16,15 +16,15 @@ module player(clk, board_state, next_move1_in, next_move2_in,  next_move1_out, n
 				next_move2_out = next_move2_in;
 			end
 			else begin
-				$display("This spot is taken\n");
-				next_move1_out = 2;
-				next_move2_out = 2;
+				//$display("This spot is taken\n");
+				next_move1_out = 3;
+				next_move2_out = 3;
 			end
 		end
 		else begin
 			$display("This spot is outside of the grid\n");
-			next_move1_out = 2;
-			next_move2_out = 2;
+			next_move1_out = 3;
+			next_move2_out = 3;
 		end
 	end
-endmodule;
+endmodule

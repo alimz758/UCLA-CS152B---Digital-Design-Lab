@@ -1,4 +1,3 @@
-
 module whoWon(clk, board_state, who_won);
 
 	input clk;

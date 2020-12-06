@@ -1,5 +1,3 @@
-
-
 module player_tb();
 
 	reg clk;
@@ -14,14 +12,13 @@ module player_tb();
 	player player(.clk(clk), .board_state(board_state), .next_move1_in(next_move1_in), .next_move2_in(next_move2_in),  .next_move1_out(next_move1_out), .next_move2_out(next_move2_out));
 	whoWon win(.clk(clk), .board_state(board_state), .who_won(who_won));
 
-
 	initial begin
 		// init grid with empty, 2
 		for (i=0; i<3; i=i+1)
 			for (j=0; j<3; j=j+1) 
 				board_state[i][j] = 2;
 
-					
+
 		clk = 1;
 		//p1 playing
 		next_move1_in = 0;
