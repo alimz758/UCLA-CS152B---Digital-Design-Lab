@@ -71,7 +71,6 @@ module player_tb();
 		#1 clk = !clk;
 	end
 	always @(posedge clk) begin
-		$display("here", who_won);
 		if (who_won == 0) 
 			$display("player 1 won");
 		if (who_won == 1) 
