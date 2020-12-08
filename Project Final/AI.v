@@ -1,19 +1,22 @@
 // Code your design here
-module AI2 (board_state, clk, next_move1, next_move2, enable_play, enable, game_is_over);
+module AI2 (board_state, clk, next_move1, next_move2, enable_play, enable);
   
-  input [1:0] board_state[0:2][0:2];	// tic-tac-toe board 
+  input [7:0] board_state[0:2][0:2];	// tic-tac-toe board 
   input clk;
   input enable_play;
   input enable;
   output reg[1:0] next_move1;	// next move 1 indicates row
   output reg[1:0] next_move2;	// next move 2 indicates column
-  output reg game_is_over; 
   
   // opponent = 0, ai = 1, empty = 2
   integer i, j;
-  integer empty = 2;
-  integer ai = 1;
-  integer opponent = 0;
+  //integer empty = 2;
+  //integer ai = 1;
+  //integer opponent = 0;
+  reg[7:0] opponent = "x";
+  reg[7:0] empty = "a";
+  reg[7:0] ai = "o";
+
   reg [1:0] b_temp [0:2][0:2];
 
   reg[4:0] read_row = 0;
@@ -21,7 +24,6 @@ module AI2 (board_state, clk, next_move1, next_move2, enable_play, enable, game_
 
 always @(posedge clk)
 begin
-	game_is_over = 0;
 	if (enable_play == 1) begin
       
     /**** AI plays normally ****/
