@@ -8,7 +8,6 @@ module whoWon(clk, board_state, who_won);
 	integer i, j;
 
 	always @(posedge clk) begin
-		
 		// first row pattern
 		if (board_state[0][0] == board_state[0][1] && board_state[0][0] ==  board_state[0][2]) begin
 			if (board_state[0][0] == 0) 
@@ -66,7 +65,7 @@ module whoWon(clk, board_state, who_won);
 				temp_win = 1;
 		end
 		else begin
-			
+			temp = 0;
 			for (i=0; i<3; i=i+1) begin
 				for (j=0; j<3; j=j+1) begin
 					if (board_state[i][j] == 2) begin
@@ -83,4 +82,4 @@ module whoWon(clk, board_state, who_won);
 		
 	end
 	assign who_won = temp_win;
-endmodule;
+endmodule

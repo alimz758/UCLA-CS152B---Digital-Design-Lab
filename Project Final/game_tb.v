@@ -53,7 +53,7 @@ module game_tb();
 		next_move1_in = 1;
 		next_move2_in = 1;
 		#20
-
+ 
 		player_move = 0;
 		next_move1_in = 1;
 		next_move2_in = 0;
@@ -65,8 +65,29 @@ module game_tb();
 		#20
 
 		player_move = 0;
+		next_move1_in = 0; // 2
+		next_move2_in = 2; // 0
+		#20
+		//$finish;
+
+		player_move = 1;
 		next_move1_in = 2;
 		next_move2_in = 0;
+		#20
+
+		player_move = 0;
+		next_move1_in = 1;
+		next_move2_in = 2;
+		#20
+
+		player_move = 1;
+		next_move1_in = 2;
+		next_move2_in = 2;
+		#20
+
+		player_move = 0;
+		next_move1_in = 2;
+		next_move2_in = 1;
 		#20
 		$finish;
 	end
