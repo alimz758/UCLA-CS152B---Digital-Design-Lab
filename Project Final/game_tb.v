@@ -24,8 +24,22 @@ module game_tb();
 		.winner(winner)
 	);
 
-	integer i;
-	integer j;
+//	initial begin
+//		clk = 1;
+//		#1;
+//		player_move = 0;
+//		#5;
+//		while (game_ended == 0) begin
+//			$display("Input your move!");
+//			next_move1_in = $fgetc('h8000_0000);
+//			#5;
+//			next_move2_in = $fgetc('h8000_0000);
+//			#5;
+//			player_move = 1 - player_move;
+//		end
+//		$finish
+//	end
+
 	initial begin
 		clk = 1;
 		#1
@@ -63,7 +77,16 @@ module game_tb();
 	end
 	always @(posedge clk) begin
 		if (game_ended == 1) begin
-			$display("Winner: %d", winner);
+			if (winner == 0)
+				$display("Winner: X");
+			else if (winner == 1)
+				$display("Winner: O");
+			else
+				$display("Tie");
+			rst = 1;
+			#20;
+			rst = 0;
+			#20;
 		end
 	end
 	
